@@ -294,6 +294,11 @@ systemctl enable mastodon-sidekiq
 systemctl enable mastodon-streaming
 ```
 
+Para acceder a la instancia instalada de esta red social, se abre un navegador en una URL con el dominio que se usó en su intalación:
+
+```
+http://mastodon.gnu.org.ve
+```
 
 
 
