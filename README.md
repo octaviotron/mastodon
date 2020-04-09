@@ -86,7 +86,7 @@ Luego se accede al CLI del servicio y se realiza un primera acceso, lo cual es n
 
 ```bash
 redis-cli
-> auth adminpass
+> auth ADMINPASS
 > shutdown
 systemctl restart redis.service
 systemctl restart redis-server
@@ -113,6 +113,8 @@ Primero, se crea el usuario, sin acceso mediante contraseña por motivos de segu
 ```bash
 adduser --disabled-login --gecos 'Mastodon Server' mastodon
 ```
+
+Es importante recordar la contraseña suministrada, pues será usada mas adelante cuando toque configurar la base de datos:
 
 Seguidamente, se accede a la cónsola de ese usuario:
 
@@ -170,9 +172,46 @@ RAILS_ENV=production bundle exec rake mastodon:setup
 
 Esto realizará un conjunto de preguntas que deben ser respondidas adecuadamente:
 
+Nombre de Dominio
+```
+Domain name: mastodon.gnu.org.ve
+```
+
+Si se responde afirmativamente la siguiente pregunta, Mastodon se instalará con un único usuario y todas las peticiones se relacionarán con un único perfil. Si se desea generar una red social con mas de un usuario (lo más común) se debe responder "no" en la siguiente pregunta:
+```
+Do you want to enable single user mode? No
+```
+
+Si se está usando Docker, el instalador necesita saberlo. En el caso de esta receta se está usando un sistema dedicado a Mastodon, por lo tanto se responde acorde a esta condición:
+```
+Are you using Docker to run Mastodon? no
+```
+
+A continuación se preguntan los valores relacionados con la Base de Datos:
+```
+PostgreSQL host: /var/run/postgresql
+PostgreSQL port: 5432
+Name of PostgreSQL database: mastodon
+Name of PostgreSQL user: mastodon
+Password of PostgreSQL user:
+```
+
+La contraseña es la misma que se usó al crear el usuario "mastodon". Si los datos se colocaron apropiadamente, se verá el siguiente mensaje:
+```
+Database configuration works!
+```
+
+Seguidamente, en un proceso similar se configura la base de datos REDIS, usada para el caché de elementos en memoria:
+```
+Redis host: localhost
+Redis port: 6379
+Redis password: ADMINPASS
+```
 
 
-
+```
+Redis configuration works!
+```
 
 
 
