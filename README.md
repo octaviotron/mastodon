@@ -56,19 +56,22 @@ En esta sección se instalan servicios que requiere integrar Mastodon para su fu
 
 ### Instalación de Node.js
 
-Existe un script creado por los desarrolladores de Node.js para instalar el servicio en las distribuciones soportadas. Sólo ejecutarlo hará que se añadan los repositorios y sus correspondientes llaves:
+Existe un script creado por los desarrolladores de Node.js para instalar el servicio en las distribuciones soportadas. Sólo ejecutarlo hará disponible dicho software via APT:
 ```bash
 curl -sL https://deb.nodesource.com/setup_10.x | bash -
 ```
 
-Hecho esto la instalación del servicio se realiza de la manera acostumbrada
+La instalación del paquete se realiza de la manera acostumbrada:
 
 ```bash
 apt install nodejs -y
 ```
 
+No se ejecuta necesariamente antes "apt update" pues el script anterior incluye esta acción.
+
 ### Instalación de YARN
-Luego mediante un proceso similar se instala YARN:
+
+Luego para tener YARN se añade la entrada en APT y su correspondiente llave pública:
 
 ```bash
 curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
@@ -155,7 +158,7 @@ adduser --disabled-login --gecos 'Mastodon Server' mastodon
 Se debe recordar la contraseña suministrada, pues será usada mas adelante cuando toque configurar la base de datos:
 
 
-### Instalación de RUBY
+### Creación del ambiente para RUBY
 
 Los siguientes pasos se ejecutan luego de acceder al sistema como el usuario mastodon:
 
@@ -163,7 +166,7 @@ Los siguientes pasos se ejecutan luego de acceder al sistema como el usuario mas
 su - mastodon
 ```
 
-Mastodon usa centralmente el lenguaje RUBY, el cual requiere tener un entorno que se genera con los siguiente pasos: 
+El lenguaje de programación RUBY requiere tener un entorno que se genera con los siguiente pasos seguidos exactamente en el siguiente orden: 
 
 ```bash
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv
