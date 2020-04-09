@@ -316,4 +316,4 @@ La intención de tener esta receta partió de la sugerencia de un colega para cr
 
 Como posdata, la reiteración acerca de que esta receta se debe complementar con pasos para incluir la integridad y el respaldo de la base de datos, indispensable para plantearse un ambiente de producción con usuarios reales, así como la opcional pero necesaria aplicación de sistemas que provean Alta Disponibilidad del servicio y Balanceo de Carga o proxeo de peticiones desde los clientes.
 
-
+Happy Hacking
