@@ -76,6 +76,8 @@ apt install yarn -y
 
 ### Cambio de clave de REDIS
 
+Este proceso está omitido en todas las recetas que están en internet actualmente. De hecho en la documentación oficial está omitida la presencia de REDIS como componenbte necesario para el servicio. En las recetas ampliadas existentes no se especifica este paso:
+
 El servicio REDIS requiere que se haga uso de una clave de acceso. Para esto se habilita el uso de contraseñas mediante el sisguiente comando, donde será necesario sustituir "ADMINPASS" por la clave de su preferencia:
 
 ```bash
