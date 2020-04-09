@@ -76,25 +76,38 @@ apt update
 apt install yarn -y
 ```
 
-### Cambio de clave de REDIS
+### Configuración de REDIS
 
-Este proceso está omitido en todas las recetas que están en internet actualmente. De hecho en la documentación oficial está omitida la presencia de REDIS como componenbte necesario para el servicio. En las recetas ampliadas existentes no se especifica este paso.
+Mastodon accede a REDIS autenticando mediante una clave. Siguiendo las instrucciones de la documentación oficial (y de otras consultadas en internet) el instalador arroja un mensaje de error, puesto que en ningún paso anterior se define u obtiene dicha contraseña y no es posible ingresar los valores apropiados que solicita el script de instalación.
 
-El servicio REDIS requiere que se haga uso de una clave de acceso. Para esto se habilita el uso de contraseñas mediante el sisguiente comando, donde será necesario sustituir "ADMINPASS" por la clave de su preferencia:
+Este conjunto de comandos logró superar con éxito la conexión con este servicio mas adelante donde se verifica y configura este servicio:
 
 ```bash
 sed -i -e 's/# requirepass foobared*/requirepass ADMINPASS/' /etc/redis/redis.conf
 ```
-
-Luego se accede al CLI del servicio y se realiza un primera acceso, lo cual es necesario para poder realizar peticiones posteriormente:
-
+Se accede entonces al CLI del servicio:
 ```bash
 redis-cli
+```
+
+Se verá la línea de comandos precedida con el signo ">" con lo cuasl se sabe que se está dentro del CLI de Redis. Allí se ejecutan estos dos comandos:
+
+```
 > auth ADMINPASS
 > shutdown
+```
+
+Con lo anterior se genera un primer acceso lo cual según la documentación permite posteriormente acceder usando esa contraseña como credencial.
+
+NOTA: es posible que se pueda omitir la modificación del archivo de configuración "/etc/redis/redis.conf" que se realizó en el paso anterior y sólo ejecutar las instrucciones dentro del CLI de Redis. Esto queda por verificar y de ser cierto mejora la seguridad al no quedar en un archivo de texto plano la contraseña del servicio.
+
+Para que Redis aplique los cambios, se reinicia el servicio:
+```bash
 systemctl restart redis.service
 systemctl restart redis-server
 ```
+
+( NOTA: es posible que se pueda omitir la modificación del archivo de configuración "/etc/redis/redis.conf" y sólo ejecutar las instrucciones dentro del CLI de Redis. Por verificar )
 
 ### Creación de la Base de Datos
 
