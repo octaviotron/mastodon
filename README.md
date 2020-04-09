@@ -246,10 +246,29 @@ Send test e-mail to: octavio.rossell@gmail.com
 
 De forma similar, el instalador permitirá hacer varios intentos en caso de que no logre enviar satisfactoriamente un correo. Es muy importante que se logre exitosamente y verificar que se ha recibido, preferiblemente usando un destinatario externo al dominio (en este ejemplo se hace la prueba con un buzón en gmail)
 
-
+Es posible guardar la configuración en un archivo para tener el registro de los valores suministrados que se guarda como "~/.env.production", para eso se responde afirmativamente en la próxima pregunta:
 ```
 Save configuration? Yes
 ```
+
+El esquema de la base de datos está listo en este punto para ser desplegado en el servicio de PostgreSQL:
+```
+Prepare the database now? Yes
+```
+
+Posteriormente el instalador pregunta si se desea compilar los componentes de Javascript y CSS, advirtiendo que esto requerirá usar memoria ram y que requerirá algo de tiempo. Es preferible hacerlo, ya que de lo contrario quedará incompleto el sistema:
+```
+Compile the assets now? (Y/n) Yes
+```
+
+Finalmente, se debe crear el usuario administrador, el cual tendrá acceso en la interfaz gráfica a la configuración del servidor de Mastodon, al sistema de reportes y a otros módulos adicionales. Por supuesto deben ajustarse los valores que se muestran como ejemplo:
+```
+Do you want to create an admin user straight away? Yes
+Username: admin
+E-mail: mastodon-admin@gnu.org.ve
+```
+
+
 
 
 
