@@ -1,5 +1,7 @@
 # Instalación de una instancia de Mastodon
 
+Licencia CC-BY-SA o FDL
+
 Esta es una receta para instalar una instancia de Mastodon en la distribución Debian Buster del Sistema Operativo GNU/Linux.
 
 NOTA: esta receta está hecha con fines didácticos. Una implementación seria de un servicio de red social como Mastodon requiere añadir un sistenma de tolerancia a fallos con Alta Disponibilidad y un almacenamiento seguro para los registros de la Base de Datos PostgreSQL, con replicación, respaldo y demás yerbas aromáticas.
@@ -124,7 +126,7 @@ Seguidamente, se accede a la cónsola de ese usuario:
 su - mastodon
 ```
 
-La receta oficial (y otras muchas que están en internet, sugieren la instalación de la versión 2.6.1 de RUBY, sin embargo esto actualmente genera unas inconsistencias con la última rama estable del servicio, por lo cual se usará una versión actualizada (2.6.6):
+Mastodon usa centralmente el lenguaje RUBY, el cual requiere tener un entorno que se genera con los siguiente pasos: 
 
 ```bash
 git clone https://github.com/rbenv/rbenv.git ~/.rbenv
@@ -300,12 +302,13 @@ Para acceder a la instancia instalada de esta red social, se abre un navegador e
 http://mastodon.gnu.org.ve
 ```
 
+## Conclusión
+
+Mastodon emplea diversas piezas de software para funcionar. En primer lugar el lenguaje de programación RUBY se encarga de la parte central de la lógica del servicio. La otra parte importante se compone de código en Javascript, el cual se provee mediante Node.js. PostgreSQL se usa para acceder a la base de datos general del sistema, junto a Redis quien provee un caché para optimizar la lectura de información por parte de algunos componentes del servicio.
+
+Construyendo esta receta pude notar que al igual que en muchos otros desarrollos en los cuales se emplea el lenguaje de programación RUBY, hay una estricta condición de funcionamiento relacionada a las versiones de los componentes del lenguaje y sus módulos (llamados gemas) y de ellos respecto a su interoperabilidad con el resto de los programas con los que se relaciona dentro del sistema. Esto dificulta crear un servicio pre-instalado en una ISO, pues sólo funcionará en arquitecturas de hardware compatibles a aquella donde se realizó el proceso de instalación (ver sección .
 
 
-
-
-
-
-
+ De allí que en todas las recetas que consulté para redactar la presente se indica que se debe instalar una versión una de Ruby distinta a la que se sugiere aquí y 
 
 
