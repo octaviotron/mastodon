@@ -306,9 +306,14 @@ http://mastodon.gnu.org.ve
 
 Mastodon emplea diversas piezas de software para funcionar. En primer lugar el lenguaje de programación RUBY se encarga de la parte central de la lógica del servicio. La otra parte importante se compone de código en Javascript, el cual se provee mediante Node.js. PostgreSQL se usa para acceder a la base de datos general del sistema, junto a Redis quien provee un caché para optimizar la lectura de información por parte de algunos componentes del servicio.
 
-Construyendo esta receta pude notar que al igual que en muchos otros desarrollos en los cuales se emplea el lenguaje de programación RUBY, hay una estricta condición de funcionamiento relacionada a las versiones de los componentes del lenguaje y sus módulos (llamados gemas) y de ellos respecto a su interoperabilidad con el resto de los programas con los que se relaciona dentro del sistema. Esto dificulta crear un servicio pre-instalado en una ISO, pues sólo funcionará en arquitecturas de hardware compatibles a aquella donde se realizó el proceso de instalación (ver sección .
+Construyendo esta receta pude notar que al igual que en muchos otros desarrollos en los cuales se emplea el lenguaje de programación RUBY, hay una estricta condición de funcionamiento relacionada a las versiones de los componentes del lenguaje y sus módulos (llamados gemas) y de ellos respecto a su interoperabilidad con el resto de los programas con los que se relaciona dentro del sistema y añadadido a eso la instalación está condicionada para sólo funcionar en cierta arquitectura de hardware: si se observa la sección con las instrucciones para instalar RUBY, se podrá ver que se realiza la compilación de un binario que por tanto estará estáticamente ligado al la arquitectura de procesador donde se ejecuta.
 
+```bash
+cd ~/.rbenv && src/configure && make -C src
+```
 
- De allí que en todas las recetas que consulté para redactar la presente se indica que se debe instalar una versión una de Ruby distinta a la que se sugiere aquí y 
+La intención de tener esta receta partió de la sugerencia de un colega para crear una ISO instalable que pudiera implementar de forma sencilla una instancia de Mastodon, pero esa motivación resultó en esta guía que con solo "copiar y pegar" (literalmente) brinda un método para tener el servicio montado en una máquina con un Debian Buster fresco.
+
+Como posdata, la reiteración acerca de que esta receta se debe complementar con pasos para incluir la integridad y el respaldo de la base de datos, indispensable para plantearse un ambiente de producción con usuarios reales, así como la opcional pero necesaria aplicación de sistemas que provean Alta Disponibilidad del servicio y Balanceo de Carga o proxeo de peticiones desde los clientes.
 
 
