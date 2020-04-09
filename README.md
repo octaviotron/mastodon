@@ -109,17 +109,32 @@ systemctl restart redis-server
 
 ( NOTA: es posible que se pueda omitir la modificación del archivo de configuración "/etc/redis/redis.conf" y sólo ejecutar las instrucciones dentro del CLI de Redis. Por verificar )
 
-### Creación de la Base de Datos
+### Configuración de la Base de Datos
 
-El servicio usa PostgreSQL como base de datos. Recuerde: esta receta es con fines didácticos, una implementación seria requiere que esta Base de Datos asegure la integridad y la réplica
+El servicio usa PostgreSQL como base de datos. Recuerde: esta receta es con fines didácticos, una implementación seria requiere que este servicio pueda garantizar la integridad y el respaldo de datos en un ambiente de producción con usuarios reales.
 
 ```bash
 su - postgres
-# psql
-> CREATE USER mastodon CREATEDB;
-> exit
-# CONTROL-D
 ```
+
+Se accede a la CLI de PostgreSQL:
+```
+psql
+```
+
+y dentro se crea la base de datos "mastodon":
+```
+CREATE USER mastodon CREATEDB;
+exit
+```
+
+Para salir del usuario postgres se presiona la combinación CONTROL-D o se ejecuta nuevamente exit
+
+```bash
+exit
+```
+
+Lo importante es asegurarse que en este punto se está de nuevo como root en la cónsola.
 
 ## Instalación de Mastodon
 
