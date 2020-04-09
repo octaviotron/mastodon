@@ -208,20 +208,22 @@ En algunos casos la instrucción anterior puede fallar, debido a archivos previo
 
 ## Implementación del Servicio
 
-Ya está todo lo necesario para implementar Mastodon. Esto se hace con la siguiente instrucción:
+Todos los pasos anteriores disponen los componentes que requiere Mastodon para ser instalado. Es ahora cuando se puede invocar el proceso de implementación del servicio, lo cual se ejecutando la siguiente instrucción:
 
 ```bash
 RAILS_ENV=production bundle exec rake mastodon:setup
 ```
 
-Esto realizará un conjunto de preguntas que deben ser respondidas adecuadamente:
+A continuación aparece en la consola un conjunto de preguntas. La mayoría de ellas muestra un texto en gris con la respuesta que se envía si se presiona sólo la tecla ENTER. En el caso de respuestas cuyas opciones son Y/N (si o no) se mostrará en mayúscula la letra que corresponde a presionar sólo ENTER. 
 
-Nombre de Dominio
+Se describe cada una de ellas y se orienta sobre el valor que debe ser suministrado en cada una:
+
+Nombre de Dominio: se debe colocar el registro en el DNS que apunta al nombre de dominio que tendrá el servicio:
 ```
 Domain name: mastodon.gnu.org.ve
 ```
 
-Si se responde afirmativamente la siguiente pregunta, Mastodon se instalará con un único usuario y todas las peticiones se relacionarán con un único perfil. Si se desea generar una red social con mas de un usuario (lo más común) se debe responder "no" en la siguiente pregunta:
+Si se responde afirmativamente la siguiente pregunta, Mastodon se instalará con un único usuario y todas las peticiones se relacionarán con un único perfil. Si se desea generar una red social con mas de un usuario (lo más común) se debe responder "no":
 ```
 Do you want to enable single user mode? No
 ```
@@ -317,7 +319,7 @@ You can login with the password: 71bd1d728ddc1950a352deadae0a7a25
 
 ## Habilitación del Servicio
 
-Ya Masstodon está instalado. Ahora hay que crear, levantar y dejar habilitado el servicio.
+Ya Masstodon está instalado. Ahora hay que crear, levantar y dejar habilitados sus servicios.
 
 Se copian los archivos con las entradas necesarias para Systemd que están disponibles dentro de lo que se descargó de Mastodon via GIT:
 ```
