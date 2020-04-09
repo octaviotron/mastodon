@@ -12,7 +12,9 @@ Esto es obligatoriamente necesario para poder comenzar a ejecutar esta receta:
 - Acceso a Internet SIN PROXY para la descarga de los paquetes necesarios
 - Una dirección IP pública. Aunque se puede montar en una red local privada, esta receta está orientada a la instalación de un certificado SSL (vía letsencryprt) que requiere para su verificación que el servicio pueda ser alcanzado desde internet.
 - Un nombre de dominio registrado en el DNS. En este ejemplo se usará "mastodon.gnu.org.ve" y en cada línea de la receta este dominio debe sustituirse por el suyo.
-- Saber leer.
+- Un servicio SMTP con un usuario y contraseñas válidos. Será usado para las notificaciones vía correo electrónico.
+
+Si alguno de los requisitos anteriores no se cumple es muy posible que no se culmine con éxito implementación del servicio.
 
 ## Preparación del Sistema Operativo.
 
