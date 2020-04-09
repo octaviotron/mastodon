@@ -140,7 +140,12 @@ Lo importante es asegurarse que en este punto se está de nuevo como root en la 
 
 Lo anterior ha servido para adaptar el sistema operativo al los requerimientos de Mastodon. Según la documentación ofocial el servicio corre deswde un usuario regular y en en ese usuario donde se instala y corre el código de la red social:
 
-Primero, se crea el usuario, sin acceso mediante contraseña por motivos de seguridad:
+
+### Creación del usuario mastodon
+
+Según la documentación oficial (y en la todas las demás recetas y tutoriales consultados) todos los archivos del servicio y de funcionamiento de Mastodon se encontrarán en la carpeta de un usuario unix sin contraseña de acceso. Como nota mental, es interesante estudiar la posibilidad de usar rutas (PATH) mas coherente respecto a lo tradicionalmente usado en sistemas POSIX, como por ejemplo /opt o /var. 
+
+Se crea un usuario regular unix y se impide que abra sesión desde una cónsola local o remota via login:
 
 ```bash
 adduser --disabled-login --gecos 'Mastodon Server' mastodon
