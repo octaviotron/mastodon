@@ -50,11 +50,11 @@ apt upgrade -y
 apt install redis software-properties-common dirmngr apt-transport-https ca-certificates curl gcc g++ make imagemagick ffmpeg libpq-dev libxml2-dev libxslt1-dev file git-core libprotobuf-dev protobuf-compiler pkg-config autoconf bison build-essential libssl-dev libyaml-dev libreadline-dev libidn11-dev libicu-dev libjemalloc-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm-dev vim certbot python-certbot-nginx nginx postgresql postgresql-contrib -y
 ```
 
-## Instalación de los componentes de Mastodon
+## Instalación de los Servicios necesarios
 
-En esta sección se obtienen e instalan los componentes que requiere el servicio para funcionar:
+En esta sección se instalan servicios que requiere integrar Mastodon para su funcionamiento:
 
-### Node.js y YARN
+### Instalación de Node.js
 
 Existe un script creado por los desarrolladores de Node.js para instalar el servicio en las distribuciones soportadas. Sólo ejecutarlo hará que se añadan los repositorios y sus correspondientes llaves:
 ```bash
@@ -67,6 +67,7 @@ Hecho esto la instalación del servicio se realiza de la manera acostumbrada
 apt install nodejs -y
 ```
 
+### Instalación de YARN
 Luego mediante un proceso similar se instala YARN:
 
 ```bash
@@ -138,7 +139,7 @@ Lo importante es asegurarse que en este punto se está de nuevo como root en la 
 
 ## Instalación de Mastodon
 
-Lo anterior ha servido para adaptar el sistema operativo al los requerimientos de Mastodon. Según la documentación ofocial el servicio corre deswde un usuario regular y en en ese usuario donde se instala y corre el código de la red social:
+Lo anterior ha servido para adaptar el sistema operativo al los requerimientos de Mastodon. Según la documentación oficial el servicio corre desde un usuario regular donde se instalan y corren de los servicios
 
 
 ### Creación del usuario mastodon
@@ -151,9 +152,12 @@ Se crea un usuario regular unix y se impide que abra sesión desde una cónsola 
 adduser --disabled-login --gecos 'Mastodon Server' mastodon
 ```
 
-Es importante recordar la contraseña suministrada, pues será usada mas adelante cuando toque configurar la base de datos:
+Se debe recordar la contraseña suministrada, pues será usada mas adelante cuando toque configurar la base de datos:
 
-Seguidamente, se accede a la cónsola de ese usuario:
+
+### Instalación de RUBY
+
+Los siguientes pasos se ejecutan luego de acceder al sistema como el usuario mastodon:
 
 ```bash
 su - mastodon
