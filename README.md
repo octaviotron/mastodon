@@ -268,7 +268,31 @@ Username: admin
 E-mail: mastodon-admin@gnu.org.ve
 ```
 
+El proceso terminará mostrando un mensaje con una contraseña para acceder como administrador de la instancia de Mastodon, que será necesario cambiar al entrar por primera vez en la sesión de usuario:
+```
+You can login with the password: 71bd1d728ddc1950a352deadae0a7a25
+```
 
+## Habilitación del Servicio
+
+Ya Masstodon está instalado. Ahora hay que crear, levantar y dejar habilitado el servicio.
+
+Se copian los archivos con las entradas necesarias para Systemd que están disponibles dentro de lo que se descargó de Mastodon via GIT:
+```
+cp /home/mastodon/live/dist/mastodon-web.service /etc/systemd/system/
+cp /home/mastodon/live/dist/mastodon-sidekiq.service /etc/systemd/system/
+cp /home/mastodon/live/dist/mastodon-streaming.service /etc/systemd/system/
+```
+
+EL último paso consiste en levantar los servicios y dejarlos habilitados para que se carguen cada vez que se inicie el sistema operativo:
+```
+systemctl start mastodon-web
+systemctl start mastodon-sidekiq
+systemctl start mastodon-streaming
+systemctl enable mastodon-web
+systemctl enable mastodon-sidekiq
+systemctl enable mastodon-streaming
+```
 
 
 
