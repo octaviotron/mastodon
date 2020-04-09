@@ -52,16 +52,69 @@ En esta sección se obtienen e instalan los componentes que requiere el servicio
 
 ### Node.js y YARN
 
+Existe un script creado por los desarrolladores de Node.js para instalar el servicio en las distribuciones soportadas. Sólo ejecutarlo hará que se añadan los repositorios y sus correspondientes llaves:
 ```bash
 curl -sL https://deb.nodesource.com/setup_10.x | bash -
+```
+
+Hecho esto la instalación del servicio se realiza de la manera acostumbrada
+
+```bash
 apt install nodejs -y
+```
+
+Luego mediante un proceso similar se instala YARN:
+
+```bash
 curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 apt update
 apt install yarn -y
 ```
 
+### Cambio de clave de REDIS
 
+El servicio REDIS requiere que se haga uso de una clave de acceso. Para esto se habilita el uso de contraseñas mediante el sisguiente comando, donde será necesario sustituir "ADMINPASS" por la clave de su preferencia:
 
+```bash
+sed -i -e 's/# requirepass foobared*/requirepass ADMINPASS/' /etc/redis/redis.conf
+```
 
+Luego se accede al CLI del servicio y se realiza un primera acceso, lo cual es necesario para poder realizar peticiones posteriormente:
+
+```bash
+redis-cli
+> auth adminpass
+> shutdown
+systemctl restart redis.service
+systemctl restart redis-server
+```
+
+### Creación de la Base de Datos
+
+El servicio usa PostgreSQL como base de datos. Recuerde: esta receta es con fines didácticos, una implementación seria requiere que esta Base de Datos asegure la integridad y la réplica
+
+```bash
+su - postgres
+# psql
+> CREATE USER mastodon CREATEDB;
+> exit
+# CONTROL-D
+```
+
+## Instalación del entorno de usuario
+
+Lo anterior ha servido para adaptar el sistema operativo al los requerimientos de Mastodon. Según la documentación ofocial el servicio corre deswde un usuario regular y en en ese usuario donde se instala y corre el código de la red social:
+
+Primero, se crea el usuario, sin acceso mediante contraseña por motivos de seguridad:
+
+```bash
+adduser --disabled-login --gecos 'Mastodon Server' mastodon
+```
+
+Seguidamente, se accede a la cónsola de ese usuario:
+
+```bash
+su - mastodon
+```
 
