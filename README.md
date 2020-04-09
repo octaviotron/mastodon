@@ -229,16 +229,28 @@ Luego el instalador preguntará si los archivos que suben los usuarios serán al
 Do you want to store uploaded files on the cloud? No
 ```
 
+A continuación se pedirán los datos para el envío de mensajes vía correo electrónico. Esto es muy necesario y se requiere conocer el sistema de autenticación, tener acceso y lograr autorización en su servidor SMTP. A continuación se muestra un ejemplo que debe ser ajustado insertando los valores apropiados que como es lógico deberá cambiar para que se correspondan con los de su servicio:
+
+```
 Do you want to send e-mails from localhost? No
-SMTP server: smtp.tu.dominio
+SMTP server: smtp.gnu.org.ve
 SMTP port: 587
-SMTP username: mastodon@tu.dominio
+SMTP username: mastodon-admin@gnu.org.ve
 SMTP password:
 SMTP authentication: plain
 SMTP OpenSSL verify mode: none
-E-mail address to send e-mails "from": mastodon@tu.dominio
+E-mail address to send e-mails "from": mastodon-admin@gnu.org.ve
 Send a test e-mail with this configuration right now? Yes
-Send test e-mail to: octavio@gnu.org.ve
+Send test e-mail to: octavio.rossell@gmail.com
+```
+
+De forma similar, el instalador permitirá hacer varios intentos en caso de que no logre enviar satisfactoriamente un correo. Es muy importante que se logre exitosamente y verificar que se ha recibido, preferiblemente usando un destinatario externo al dominio (en este ejemplo se hace la prueba con un buzón en gmail)
+
+
+```
+Save configuration? Yes
+```
+
 
 
 
