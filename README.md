@@ -102,7 +102,7 @@ su - postgres
 # CONTROL-D
 ```
 
-## Instalación del entorno de usuario
+## Instalación de Mastodon
 
 Lo anterior ha servido para adaptar el sistema operativo al los requerimientos de Mastodon. Según la documentación ofocial el servicio corre deswde un usuario regular y en en ese usuario donde se instala y corre el código de la red social:
 
@@ -117,4 +117,61 @@ Seguidamente, se accede a la cónsola de ese usuario:
 ```bash
 su - mastodon
 ```
+
+La receta oficial (y otras muchas que están en internet, sugieren la instalación de la versión 2.6.1 de RUBY, sin embargo esto actualmente genera unas inconsistencias con la última rama estable del servicio, por lo cual se usará una versión actualizada (2.6.6):
+
+```bash
+git clone https://github.com/rbenv/rbenv.git ~/.rbenv
+cd ~/.rbenv && src/configure && make -C src
+echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'eval "$(rbenv init -)"' >> ~/.bashrc
+exec bash
+git clone https://github.com/rbenv/ruby-build.git ~/.rbenv/plugins/ruby-build
+RUBY_CONFIGURE_OPTS=--with-jemalloc rbenv install 2.6.6
+rbenv global 2.6.6
+gem update --system --no-document
+gem install bundler --no-document
+```
+
+Para probar que se ha instalado satisfactoriamente, se ejecuta el siguiente comando:
+```bash
+ruby --version
+```
+
+Lo cual debe arrojar una salida similar a esta:
+```
+ruby 2.6.6p146 (2020-03-31 revision 67876) [x86_64-linux]
+```
+
+Ahora, se descarga e instala el código de Mastodon:
+
+```bash
+git clone https://github.com/tootsuite/mastodon.git ~/live
+cd ~/live
+bundle install -j$(getconf _NPROCESSORS_ONLN) --deployment --without development test
+```
+
+Seguidamente se instala el manejar de paquetes YARN
+
+```bash
+yarn install --pure-lockfile
+```
+En algunos casos la instrucción anterior puede fallar, debido a archivos previos de YARN existentes en el repo de Mastodon. De ser así es necesario eliminarlos para proseguir la instalación y superar el error "Segmentation Fault" que se produce.
+
+## Implementación del Servicio
+
+Ya está todo lo necesario para implementar Mastodon. Esto se hace con la siguiente instrucción:
+
+```bash
+RAILS_ENV=production bundle exec rake mastodon:setup
+```
+
+Esto realizará un conjunto de preguntas que deben ser respondidas adecuadamente:
+
+
+
+
+
+
+
 
