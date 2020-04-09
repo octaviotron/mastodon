@@ -76,7 +76,7 @@ apt install yarn -y
 
 ### Cambio de clave de REDIS
 
-Este proceso está omitido en todas las recetas que están en internet actualmente. De hecho en la documentación oficial está omitida la presencia de REDIS como componenbte necesario para el servicio. En las recetas ampliadas existentes no se especifica este paso:
+Este proceso está omitido en todas las recetas que están en internet actualmente. De hecho en la documentación oficial está omitida la presencia de REDIS como componenbte necesario para el servicio. En las recetas ampliadas existentes no se especifica este paso.
 
 El servicio REDIS requiere que se haga uso de una clave de acceso. Para esto se habilita el uso de contraseñas mediante el sisguiente comando, donde será necesario sustituir "ADMINPASS" por la clave de su preferencia:
 
@@ -198,10 +198,16 @@ Name of PostgreSQL user: mastodon
 Password of PostgreSQL user:
 ```
 
-La contraseña es la misma que se usó al crear el usuario "mastodon". Si los datos se colocaron apropiadamente, se verá el siguiente mensaje:
+Los primeros valores se seleccionan presionando ENTER, pues se sugieren por defecto. En esta receta la base de datos se llama "mastodon" (distinto del valor por defecto). El usuario debe ser "mastodon" y la contraseña es la misma que se usó al crear ese usuario. 
+
+Si los datos se colocaron apropiadamente, se verá el siguiente mensaje:
 ```
 Database configuration works!
 ```
+
+Es muy necesario recordar que en un ambiente de producción con usuarios reales se debe contemplar la integridad y respaldo de la base de datos usando las técnicas conocidas para tal fin.
+
+Si se comete un error al suministrar los datos, el instalador permitirá reitentar o continuar. No se debe continuar sin lograr una conexión satisfactoria.
 
 Seguidamente, en un proceso similar se configura la base de datos REDIS, usada para el caché de elementos en memoria:
 ```
@@ -210,10 +216,35 @@ Redis port: 6379
 Redis password: ADMINPASS
 ```
 
-
+Si se suministran los datos correctamente (los dos primeros se seleccionan presionando ENTER para aceptar los que se sugieren por defecto)
 ```
 Redis configuration works!
 ```
+
+Al igual que la configuración anterior, es posible repetir este paso hasta lograr la conexión, sin lo cual no se debe continuar o todo el proceso fallará posteriomente.
+
+Luego el instalador preguntará si los archivos que suben los usuarios serán almacenados en una nube. En esta receta se responde "no", pero es posible posteriormente configurarlo desde la interfaz gráfica para almacenar los archivos multimedia en un servicio externo (recomendable en un ambiente de producción):
+
+```
+Do you want to store uploaded files on the cloud? No
+```
+
+Do you want to send e-mails from localhost? No
+SMTP server: smtp.tu.dominio
+SMTP port: 587
+SMTP username: mastodon@tu.dominio
+SMTP password:
+SMTP authentication: plain
+SMTP OpenSSL verify mode: none
+E-mail address to send e-mails "from": mastodon@tu.dominio
+Send a test e-mail with this configuration right now? Yes
+Send test e-mail to: octavio@gnu.org.ve
+
+
+
+
+
+
 
 
 
