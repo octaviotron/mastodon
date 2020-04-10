@@ -22,7 +22,7 @@ Si alguno de los requisitos anteriores no se cumple es muy posible que no se cul
 
 Después de tener una instalación mínima de Debian Buster (sin interfaz gráfica, no es para jugar buscaminas que se instalará la máquina) se asegura que se cumplen las siguientes condiciones:
 
-###Nombre del Host FQDN
+### Nombre del Host FQDN
 
 ```bash
 hostnamectl set-hostname mastodon.gnu.org.ve
@@ -30,7 +30,7 @@ hostnamectl set-hostname mastodon.gnu.org.ve
 
 Recuerda: cada vez que leas "mastodon.gnu.org.ve" debes sustituirlo por tu dominio.
 
-###Entrada en /etc/hosts
+### Entrada en /etc/hosts
 
 
 ```bash
@@ -110,8 +110,6 @@ Para que Redis aplique los cambios, se reinicia el servicio:
 systemctl restart redis.service
 systemctl restart redis-server
 ```
-
-( NOTA: es posible que se pueda omitir la modificación del archivo de configuración "/etc/redis/redis.conf" y sólo ejecutar las instrucciones dentro del CLI de Redis. Por verificar )
 
 ### Configuración de la Base de Datos
 
