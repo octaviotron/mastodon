@@ -117,7 +117,7 @@ systemctl restart redis-server
 
 ### Configuración de la Base de Datos
 
-El servicio usa PostgreSQL como base de datos. Recuerde: esta receta es con fines didácticos, una implementación seria requiere que este servicio pueda garantizar la integridad y el respaldo de datos en un ambiente de producción con usuarios reales.
+El servicio usa PostgreSQL como base de datos. Recuerde: esta receta es con fines didácticos, una implementación seria requiere que este servicio pueda garantizar la integridad y el respaldo de datos lo cual es imprescindible en un ambiente de producción con usuarios reales.
 
 ```bash
 su - postgres
@@ -144,12 +144,12 @@ Lo importante es asegurarse que en este punto se está de nuevo como root en la 
 
 ## Instalación de Mastodon
 
-Lo anterior ha servido para adaptar el sistema operativo al los requerimientos de Mastodon. Según la documentación oficial el servicio corre desde un usuario regular donde se instalan y corren de los servicios
+Lo anterior ha servido para adaptar el sistema operativo al los requerimientos de Mastodon. Ahora se descarga y se instala el software que compone esta red social.
 
 
 ### Creación del usuario mastodon
 
-Según la documentación oficial (y en la todas las demás recetas y tutoriales consultados) todos los archivos del servicio y de funcionamiento de Mastodon se encontrarán en la carpeta de un usuario unix sin contraseña de acceso. Como nota mental, es interesante estudiar la posibilidad de usar rutas (PATH) mas coherente respecto a lo tradicionalmente usado en sistemas POSIX, como por ejemplo /opt o /var. 
+Según la documentación oficial (y en la todas las demás recetas y tutoriales consultados) todos los archivos del servicio y de funcionamiento de Mastodon se encontrarán en la carpeta de un usuario unix sin contraseña de acceso. Como nota mental, es interesante estudiar la posibilidad de usar otra ruta (PATH) mas coherente respecto a lo tradicionalmente usado en sistemas POSIX, como por ejemplo /opt o /var. 
 
 Se crea un usuario regular unix y se impide que abra sesión desde una cónsola local o remota via login:
 
