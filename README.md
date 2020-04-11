@@ -11,7 +11,7 @@ NOTA: esta receta está hecha con fines didácticos. Una implementación seria d
 Esto es obligatoriamente necesario para poder comenzar a ejecutar esta receta:
 
 - Una máquina con Debian GNU/Linux 10 (buster). Preferiblemente con 2GB de RAM, 2 procesadores y un espacio de almacenamiento adecuado a la cantidad de actividad que se espera. Se puede comenzar con unos 20GB para realizar pruebas.
-- Acceso a Internet SIN PROXY para la descarga de los paquetes necesarios
+- Acceso a Internet SIN PROXY para la descarga de los paquetes necesarios. Esta receta usa diversos métodos para descargar software y un PROXY entorpecerá el proceso en varias partes (por otro lado ¿para qué tener un proxy de navegación en un servicio?)
 - Una dirección IP pública. Aunque se puede montar en una red local privada, esta receta está orientada a la instalación de un certificado SSL (vía letsencryprt) que requiere para su verificación que el servicio pueda ser alcanzado desde internet.
 - Un nombre de dominio registrado en el DNS. En este ejemplo se usará "mastodon.gnu.org.ve" y en cada línea de la receta este dominio debe sustituirse por el suyo.
 - Un servicio SMTP con un usuario y contraseñas válidos. Será usado para las notificaciones vía correo electrónico.
@@ -47,7 +47,11 @@ apt upgrade -y
 ### Instalación de la paquetería base
 
 ```bash
-apt install redis software-properties-common dirmngr apt-transport-https ca-certificates curl gcc g++ make imagemagick ffmpeg libpq-dev libxml2-dev libxslt1-dev file git-core libprotobuf-dev protobuf-compiler pkg-config autoconf bison build-essential libssl-dev libyaml-dev libreadline-dev libidn11-dev libicu-dev libjemalloc-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm-dev vim certbot python-certbot-nginx nginx postgresql postgresql-contrib -y
+apt install redis software-properties-common dirmngr apt-transport-https ca-certificates \
+  curl gcc g++ make imagemagick ffmpeg libpq-dev libxml2-dev libxslt1-dev file git-core \
+  libprotobuf-dev protobuf-compiler pkg-config autoconf bison build-essential libssl-dev \
+  libyaml-dev libreadline-dev libidn11-dev libicu-dev libjemalloc-dev zlib1g-dev libncurses5-dev \
+  libffi-dev libgdbm-dev vim certbot python-certbot-nginx nginx postgresql postgresql-contrib -y
 ```
 
 ## Instalación de los Servicios necesarios
