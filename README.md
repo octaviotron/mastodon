@@ -356,7 +356,7 @@ Construyendo esta receta pude notar que al igual que en muchos otros desarrollos
 cd ~/.rbenv && src/configure && make -C src
 ```
 
-La intención de tener esta receta partió de la sugerencia de un colega para crear una ISO instalable que pudiera implementar de forma sencilla una instancia de Mastodon, pero esa motivación resultó en esta guía que con solo "copiar y pegar" (literalmente) brinda un método para tener el servicio montado en una máquina con un Debian Buster fresco.
+La intención de tener esta receta partió de la sugerencia de un colega para crear una ISO instalable que pudiera implementar de forma sencilla una instancia de Mastodon, aunque por la razón anterior esto es poco útil (pues se estaría confinado a funcionar sólo en el tipo de hardware donde se compila rbenv) esa motivación resultó en esta guía que con solo "copiar y pegar" (literalmente) brinda un método para tener el servicio montado en una máquina con un Debian Buster fresco.
 
 Como posdata, la reiteración acerca de que esta receta se debe complementar con pasos para incluir la integridad y el respaldo de la base de datos, indispensable para plantearse un ambiente de producción con usuarios reales, así como la opcional pero necesaria aplicación de sistemas que provean Alta Disponibilidad del servicio y Balanceo de Carga o proxeo de peticiones desde los clientes.
 
