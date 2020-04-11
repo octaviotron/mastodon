@@ -16,7 +16,7 @@ Esto es obligatoriamente necesario para poder comenzar a ejecutar esta receta:
 - Un nombre de dominio registrado en el DNS. En este ejemplo se usará "mastodon.gnu.org.ve" y en cada línea de la receta este dominio debe sustituirse por el suyo.
 - Un servicio SMTP con un usuario y contraseñas válidos. Será usado para las notificaciones vía correo electrónico.
 
-Si alguno de los requisitos anteriores no se cumple es muy posible que no se culmine con éxito implementación del servicio.
+Si alguno de los requisitos anteriores no se cumple es muy posible que no se culmine con éxito la implementación del servicio.
 
 ## Preparación del Sistema Operativo.
 
