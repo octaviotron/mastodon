@@ -92,6 +92,7 @@ Este conjunto de comandos logró superar con éxito la conexión con este servic
 
 ```bash
 sed -i -e 's/# requirepass foobared*/requirepass ADMINPASS/' /etc/redis/redis.conf
+systemctl restart redis-server
 ```
 Se accede entonces al CLI del servicio:
 ```bash
@@ -107,11 +108,8 @@ Se verá la línea de comandos precedida con el signo ">" con lo cuasl se sabe q
 
 Con lo anterior se genera un primer acceso lo cual según la documentación permite posteriormente acceder usando esa contraseña como credencial.
 
-NOTA: es posible que se pueda omitir la modificación del archivo de configuración "/etc/redis/redis.conf" que se realizó en el paso anterior y sólo ejecutar las instrucciones dentro del CLI de Redis. Esto queda por verificar y de ser cierto mejora la seguridad al no quedar en un archivo de texto plano la contraseña del servicio.
-
 Para que Redis aplique los cambios, se reinicia el servicio:
 ```bash
-systemctl restart redis.service
 systemctl restart redis-server
 ```
 
