@@ -199,7 +199,7 @@ cd ~/live
 bundle install -j$(getconf _NPROCESSORS_ONLN) --deployment --without development test
 ```
 
-Seguidamente se vincula el manejador de paquetes YARN
+Seguidamente usando YARN se instalan todas las dependencias para Node.js (listadas en el archivo "package.json" que viene incluído en la descarga anterior vía GIT):
 
 ```bash
 yarn install --pure-lockfile
