@@ -18,6 +18,8 @@ Esto es obligatoriamente necesario para poder comenzar a ejecutar esta receta:
 
 Si alguno de los requisitos anteriores no se cumple es muy posible que no se culmine con éxito la implementación del servicio.
 
+Asimismo, se debe usar la imagen para arquitectura de 64 bits (amd64) pues algunos paquetes (como nodejs) no están disponibles para i386.
+
 ## Preparación del Sistema Operativo.
 
 Esta receta funciona aplicándola en un host con Debian Buster recién instalado con la paquetería mínima. No es necesaria una interfaz gráfica (a ver: no es para jugar buscaminas) y es **importante** que durante la instalación se use un nombre distinto de "mastodon" para el usuario sin privilegios, pues en el proceso que sigue a continuación creará una cuenta con ese nombre y no debe existir previamente en el sistema.
