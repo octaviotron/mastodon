@@ -196,7 +196,15 @@ Ahora, se descarga e instala el código de Mastodon:
 ```bash
 git clone https://github.com/tootsuite/mastodon.git ~/live
 cd ~/live
-bundle install -j$(getconf _NPROCESSORS_ONLN) --deployment --without development test
+git checkout $(git tag -l | grep -v 'rc[0-9]*$' | sort -V | tail -n 1)
+```
+
+y se instala la última versión estable, exceptuando las ramas de prueba y desarrollo:
+
+```bash
+bundle config set deployment 'true'
+bundle config set without 'development test'
+bundle install -j$(getconf _NPROCESSORS_ONLN) 
 ```
 
 Seguidamente usando YARN se instalan todas las dependencias para Node.js (listadas en el archivo "package.json" que viene incluído en la descarga anterior vía GIT):
