@@ -199,7 +199,7 @@ cd ~/live
 bundle install -j$(getconf _NPROCESSORS_ONLN) --deployment --without development test
 ```
 
-Seguidamente se instala el manejar de paquetes YARN
+Seguidamente se vincula el manejador de paquetes YARN
 
 ```bash
 yarn install --pure-lockfile
