@@ -20,7 +20,7 @@ Si alguno de los requisitos anteriores no se cumple es muy posible que no se cul
 
 ## Preparación del Sistema Operativo.
 
-Después de tener una instalación mínima de Debian Buster (sin interfaz gráfica, no es para jugar buscaminas que se instalará la máquina) se asegura que se cumplen las siguientes condiciones:
+Esta receta funciona aplicándola en un host con Debian Buster recién instalado con la paquetería mínima. No es necesaria una interfaz gráfica (a ver: no es para jugar buscaminas) y es **importante** que durante la instalación se use un nombre distinto de "mastodon" para el usuario sin privilegios, pues en el proceso que sigue a continuación creará una cuenta con ese nombre y no debe existir previamente en el sistema.
 
 ### Nombre del Host FQDN
 
