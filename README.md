@@ -10,7 +10,7 @@ NOTA: esta receta está hecha con fines didácticos. Una implementación seria d
 
 Esto es obligatoriamente necesario para poder comenzar a ejecutar esta receta:
 
-- Una máquina con Debian GNU/Linux 10 (buster). Preferiblemente con 2GB de RAM, 2 procesadores y un espacio de almacenamiento adecuado a la cantidad de actividad que se espera. Se puede comenzar con unos 20GB para realizar pruebas.
+- Una máquina con Debian GNU/Linux. Esta receta ha sido probada satisfactoriamente en las versiones 9 (stretch) y 10 (buster). Preferiblemente con 2GB de RAM, 2 procesadores y un espacio de almacenamiento adecuado a la cantidad de actividad que se espera. Se puede comenzar con unos 20GB para realizar pruebas.
 - Acceso a Internet SIN PROXY para la descarga de los paquetes necesarios. Esta receta usa diversos métodos para descargar software y un PROXY entorpecerá el proceso en varias partes (por otro lado ¿para qué tener un proxy de navegación en un servicio?)
 - Una dirección IP pública. Aunque se puede montar en una red local privada, esta receta está orientada a la instalación de un certificado SSL (vía letsencryprt) que requiere para su verificación que el servicio pueda ser alcanzado desde internet.
 - Un nombre de dominio registrado en el DNS. En este ejemplo se usará "mastodon.gnu.org.ve" y en cada línea de la receta este dominio debe sustituirse por el suyo.
