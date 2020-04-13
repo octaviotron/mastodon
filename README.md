@@ -110,11 +110,6 @@ Se verá la línea de comandos precedida con el signo ">" con lo cuasl se sabe q
 
 Con lo anterior se genera un primer acceso lo cual según la documentación permite posteriormente acceder usando esa contraseña como credencial.
 
-Para que Redis aplique los cambios, se reinicia el servicio:
-```bash
-systemctl restart redis-server
-```
-
 ### Configuración de la Base de Datos
 
 El servicio usa PostgreSQL como base de datos. Recuerde: esta receta es con fines didácticos, una implementación seria requiere que este servicio pueda garantizar la integridad y el respaldo de datos lo cual es imprescindible en un ambiente de producción con usuarios reales.
