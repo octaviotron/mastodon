@@ -64,7 +64,7 @@ En esta sección se instalan servicios que requiere integrar Mastodon para su fu
 
 Existe un script creado por los desarrolladores de Node.js para instalar el servicio en las distribuciones soportadas. Sólo ejecutarlo hará disponible dicho software via APT:
 ```bash
-curl -sL https://deb.nodesource.com/setup_10.x | bash -
+curl -sL https://deb.nodesource.com/setup_12.x | bash -
 ```
 
 La instalación del paquete se realiza de la manera acostumbrada:
