@@ -221,7 +221,7 @@ En algunos casos la instrucción anterior puede fallar, debido a archivos previo
 Todos los pasos anteriores disponen los componentes que requiere Mastodon para ser instalado. Es ahora cuando se puede invocar el proceso de implementación del servicio, lo cual se ejecutando la siguiente instrucción:
 
 ```bash
-RAILS_ENV=production bundle exec rake mastodon:setup
+DISABLE_DATABASE_ENVIRONMENT_CHECK=1 RAILS_ENV=production bundle exec rake mastodon:setup
 ```
 
 A continuación aparece en la consola un conjunto de preguntas. La mayoría de ellas muestra un texto en gris con la respuesta que se envía si se presiona sólo la tecla ENTER. En el caso de respuestas cuyas opciones son Y/N (si o no) se mostrará en mayúscula la letra que corresponde a presionar sólo ENTER. 
